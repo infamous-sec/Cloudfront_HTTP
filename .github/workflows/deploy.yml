@@ -1,0 +1,50 @@
+name: Deploy to cPanel Cloud Hosting
+
+on:
+  push:
+    branches:
+      - main  # Adjust if your default branch is different
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      BUILD_DIR: dist  # Or .next or build, depending on framework
+
+    steps:
+    - name: 📥 Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: ⚙️ Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18
+        cache: 'npm'
+
+    - name: 📦 Install Dependencies
+      run: npm ci
+
+    - name: 🔨 Build Project
+      run: npm run build
+
+    - name: 🕵️ Obfuscate JavaScript
+      run: |
+        npm install -g javascript-obfuscator
+        javascript-obfuscator $BUILD_DIR --output $BUILD_DIR --compact true --self-defending true
+
+    - name: 🚀 Deploy to cPan3l via SFTP
+      uses: SamKirkland/FTP-Deploy-Action@v4
+      with:
+        server: ${{ secrets.FTP_HOST }}
+        username: ${{ secrets.FTP_USER }}
+        password: ${{ secrets.FTP_PASS }}
+        local-dir: ${{ env.BUILD_DIR }}
+        server-dir: ${{ secrets.FTP_PATH }}
+        exclude: |
+          **/.git*
+          **/.DS_Store
+          **/node_modules
+
+    - name: ✅ Deployment Completed
+      run: echo "Deployment to cPanel successful."
