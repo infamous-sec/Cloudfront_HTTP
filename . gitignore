@@ -1,0 +1,5 @@
+.env
+deploy.env
+scripts/
+node_modules/
+dist/
