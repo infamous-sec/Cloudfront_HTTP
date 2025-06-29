@@ -1,0 +1,16 @@
+# Node junk
+node_modules
+npm-debug.log
+yarn.lock
+
+# Git files
+.git
+.gitignore
+
+# Docker config
+.dockerignore
+.env
+deploy.env
+
+# Local-only code (security)
+scripts/
