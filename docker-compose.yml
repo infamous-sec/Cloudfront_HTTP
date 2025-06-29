@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+  builder:
+    image: node:18
+    container_name: builder
+    working_dir: /app
+    volumes:
+      - ./app:/app
+#
+    command: >
+      sh -c "
+        npm ci &&
+        npm run build &&
+        node /scripts/obfuscate.js /app/dist &&
+        echo 'Obfuscation complete'
+      "
+    env_file:
+      - .env
+
+  deployer:
+    image: alpine:latest
+    depends_on:
+      - builder
+    entrypoint: ["/bin/sh", "-c"]
+    command: |
+      apk add --no-cache lftp &&
+      lftp -c "set ssl:verify-certificate no;
+               open -u $${FTP_USER},$${FTP_PASS} $${FTP_HOST};
+               mirror -R --verbose --only-newer ./app/dist/ $${FTP_PATH};
+               bye;"
+    env_file:
+      - ./deploy.env
