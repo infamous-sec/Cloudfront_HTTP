@@ -1,0 +1,11 @@
+{
+  "name": "shadowlane-site",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "vite build"  // or react-scripts build, next build, etc.
+  },
+  "dependencies": {
+    "javascript-obfuscator": "^4.0.0"
+  },
+  "devDependencies": {}
+}
