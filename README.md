@@ -14,6 +14,9 @@ A dynamic, obfuscated web deployment pipeline built by **ShadowLane SC UK** for 
 ![Docker](https://img.shields.io/badge/docker%20compose-supported-brightgreen?logo=docker)
 ![Security](https://img.shields.io/badge/security-policy-brightgreen)
 
+![Slack Notify](https://img.shields.io/badge/Slack-Integrated-blue?logo=slack)
+![Discord Alerts](https://img.shields.io/badge/Discord-Alerts-blueviolet?logo=discord)
+
 --- 
 
 ---
