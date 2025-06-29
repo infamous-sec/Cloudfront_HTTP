@@ -3,10 +3,10 @@
 
 A dynamic, obfuscated web deployment pipeline built by **ShadowLane SC UK** for automated delivery to cPanel shared hosting using Docker and FTP/SFTP.
 
-![Deploy](https://img.shields.io/github/actions/workflow/status/shadowlane-sc/Cloudfront_HTTP/deploy.yml)
+![Deploy](https://img.shields.io/github/actions/workflow/status/shadowlane-sc/Cloudfront_HTTP/deploy.yml?branch=main)
 ![License](https://img.shields.io/github/license/shadowlane-sc/Cloudfront_HTTP)
 ![Repo Size](https://img.shields.io/github/repo-size/shadowlane-sc/Cloudfront_HTTP)
-![Maintained](https://img.shields.io/badge/maintained-yes-blue)
+![Dependabot](https://img.shields.io/github/dependabot/shadowlane-sc/Cloudfront_HTTP) 
 
 ---
 
