@@ -1,16 +1,16 @@
-name: Deploy to cPanel Cloud Hosting
+name: Deploy to cPanel Hosting (SFTP + Notifications)
 
 on:
   push:
     branches:
-      - main  # Adjust if your default branch is different
+      - main
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
 
     env:
-      BUILD_DIR: dist  # Or .next or build, depending on framework
+      BUILD_DIR: dist  # Adjust if needed (e.g., build, .next)
 
     steps:
     - name: 📥 Checkout Repository
@@ -33,18 +33,46 @@ jobs:
         npm install -g javascript-obfuscator
         javascript-obfuscator $BUILD_DIR --output $BUILD_DIR --compact true --self-defending true
 
-    - name: 🚀 Deploy to cPan3l via SFTP
-      uses: SamKirkland/FTP-Deploy-Action@v4
+    - name: 🚀 Deploy via SFTP
+      uses: wangyucode/sftp-deploy@v1.2.4
       with:
-        server: ${{ secrets.FTP_HOST }}
-        username: ${{ secrets.FTP_USER }}
-        password: ${{ secrets.FTP_PASS }}
-        local-dir: ${{ env.BUILD_DIR }}
-        server-dir: ${{ secrets.FTP_PATH }}
-        exclude: |
-          **/.git*
-          **/.DS_Store
-          **/node_modules
+        host: ${{ secrets.SFTP_HOST }}
+        port: ${{ secrets.SFTP_PORT }}
+        username: ${{ secrets.SFTP_USER }}
+        password: ${{ secrets.SFTP_PASS }}
+        localPath: ${{ env.BUILD_DIR }}
+        remotePath: ${{ secrets.SFTP_PATH }}
+        dryRun: false
+        deleteRemoteFiles: false
 
-    - name: ✅ Deployment Completed
-      run: echo "Deployment to cPanel successful."
+    - name: ✅ Send Discord Notification
+      if: success()
+      uses: Ilshidur/action-discord@v1
+      with:
+        webhook: ${{ secrets.DISCORD_WEBHOOK }}
+        message: "✅ Cloudfront_HTTP deployed successfully to cPanel via SFTP."
+
+    - name: ❌ Send Discord Failure Alert
+      if: failure()
+      uses: Ilshidur/action-discord@v1
+      with:
+        webhook: ${{ secrets.DISCORD_WEBHOOK }}
+        message: "🚨 Cloudfront_HTTP deployment failed."
+
+    - name: ✅ Send Slack Notification
+      if: success()
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_USERNAME: "CloudfrontBot"
+        SLACK_ICON_EMOJI: ":rocket:"
+        SLACK_MESSAGE: "✅ Cloudfront_HTTP deployed successfully to cPanel."
+
+    - name: ❌ Send Slack Failure Alert
+      if: failure()
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_USERNAME: "CloudfrontBot"
+        SLACK_ICON_EMOJI: ":x:"
+        SLACK_MESSAGE: "🚨 Cloudfront_HTTP deployment failed."
