@@ -1,0 +1,42 @@
+name: Deploy to cPanel Cloud
+
+on:
+  push:
+    branches:
+      - main  # Change this if your default branch is different (e.g., master)
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      
+      - name: Install & Build
+        run: |
+          npm ci
+          npm run build
+      
+      - name: Obfuscate JS
+        run: |
+          npm install javascript-obfuscator
+          node scripts/obfuscate.js ./dist
+      
+      - name: Deploy via FTP
+        run: |
+          sudo apt-get install -y lftp
+          lftp -c "
+            set ssl:verify-certificate no;
+            open -u $FTP_USER,$FTP_PASS $FTP_HOST;
+            mirror -R ./dist/ $FTP_PATH;
+            bye;"
+        env:
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASS: ${{ secrets.FTP_PASS }}
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_PATH: ${{ secrets.FTP_PATH }}
