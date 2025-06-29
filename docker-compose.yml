@@ -1,33 +1,146 @@
-version: '3.9'
+version: "3.9"
 
 services:
-  builder:
-    image: node:18
-    container_name: builder
-    working_dir: /app
-    volumes:
-      - ./app:/app
-#
-    command: >
-      sh -c "
-        npm ci &&
-        npm run build &&
-        node /scripts/obfuscate.js /app/dist &&
-        echo 'Obfuscation complete'
-      "
-    env_file:
-      - .env
 
-  deployer:
-    image: alpine:latest
+  medusa-api:
+    image: medusajs/medusa:latest
+    container_name: medusa_api
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgres://${DB_USER}:${DB_PASSWORD}@db:5432/${DB_NAME}
+      REDIS_URL: redis://redis:6379
+      NODE_ENV: production
     depends_on:
-      - builder
-    entrypoint: ["/bin/sh", "-c"]
-    command: |
-      apk add --no-cache lftp &&
-      lftp -c "set ssl:verify-certificate no;
-               open -u $${FTP_USER},$${FTP_PASS} $${FTP_HOST};
-               mirror -R --verbose --only-newer ./app/dist/ $${FTP_PATH};
-               bye;"
-    env_file:
-      - ./deploy.env
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    ports:
+      - "9000:9000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+          cpus: '1.0'
+
+  medusa-admin:
+    image: medusajs/admin:latest
+    container_name: medusa_admin
+    restart: unless-stopped
+    environment:
+      MEDUSA_BACKEND_URL: http://medusa-api:9000
+    depends_on:
+      medusa-api:
+        condition: service_healthy
+    ports:
+      - "7000:7000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+
+  db:
+    image: postgres:16-alpine
+    container_name: medusa_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - medusa-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER}"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+          cpus: '1.0'
+
+  redis:
+    image: redis:7-alpine
+    container_name: medusa_redis
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: '0.5'
+
+  adminer:
+    image: adminer
+    container_name: medusa_adminer
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: '0.25'
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared_tunnel
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run --token ${CF_TUNNEL_TOKEN}
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: '0.25'
+
+volumes:
+  medusa-db-data:
