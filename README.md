@@ -1,12 +1,20 @@
-
 # ☁️ Cloudfront_HTTP
 
 A dynamic, obfuscated web deployment pipeline built by **ShadowLane SC UK** for automated delivery to cPanel shared hosting using Docker and FTP/SFTP.
 
-![Deploy](https://img.shields.io/github/actions/workflow/status/shadowlane-sc/Cloudfront_HTTP/deploy.yml?branch=main)
+![Build](https://img.shields.io/github/actions/workflow/status/shadowlane-sc/Cloudfront_HTTP/deploy.yml?branch=main)
 ![License](https://img.shields.io/github/license/shadowlane-sc/Cloudfront_HTTP)
 ![Repo Size](https://img.shields.io/github/repo-size/shadowlane-sc/Cloudfront_HTTP)
-![Dependabot](https://img.shields.io/github/dependabot/shadowlane-sc/Cloudfront_HTTP) 
+![Dependabot](https://img.shields.io/badge/Dependabot-enabled-blue?logo=dependabot)
+
+![Stars](https://img.shields.io/github/stars/shadowlane-sc/Cloudfront_HTTP?style=social)
+![Forks](https://img.shields.io/github/forks/shadowlane-sc/Cloudfront_HTTP?style=social)
+![Issues](https://img.shields.io/github/issues/shadowlane-sc/Cloudfront_HTTP)
+![Last Commit](https://img.shields.io/github/last-commit/shadowlane-sc/Cloudfront_HTTP)
+![Docker](https://img.shields.io/badge/docker%20compose-supported-brightgreen?logo=docker)
+![Security](https://img.shields.io/badge/security-policy-brightgreen)
+
+--- 
 
 ---
 
