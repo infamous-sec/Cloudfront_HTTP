@@ -1,0 +1,15 @@
+# Enable custom error pages
+ErrorDocument 404 /404.html
+
+# Security headers (basic)
+Header set X-Content-Type-Options "nosniff"
+Header set X-Frame-Options "SAMEORIGIN"
+Header set Referrer-Policy "no-referrer-when-downgrade"
+
+# Redirect HTTP to HTTPS (if supported)
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Block access to hidden files and folders
+RedirectMatch 404 /\..*$
