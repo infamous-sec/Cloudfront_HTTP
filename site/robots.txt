@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /admin
+Disallow: /private
+Disallow: /backup
+Disallow: /.env
+Disallow: /.git
+
+Sitemap: https://shadowlane.cymru/sitemap.xml
