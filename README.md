@@ -2,20 +2,29 @@
 
 A dynamic, obfuscated web deployment pipeline built by **ShadowLane SC UK** for automated delivery to cPanel shared hosting using Docker and FTP/SFTP.
 
-![Build](https://img.shields.io/github/actions/workflow/status/shadowlane-sc/Cloudfront_HTTP/deploy.yml?branch=main)
-![License](https://img.shields.io/github/license/shadowlane-sc/Cloudfront_HTTP)
-![Repo Size](https://img.shields.io/github/repo-size/shadowlane-sc/Cloudfront_HTTP)
-![Dependabot](https://img.shields.io/badge/Dependabot-enabled-blue?logo=dependabot)
+<!-- Status & Meta -->
+[![Deploy Status](https://img.shields.io/github/actions/workflow/status/shadowlane-sc/Cloudfront_HTTP/deploy.yml?branch=main&label=Deploy%20Status)](https://github.com/shadowlane-sc/Cloudfront_HTTP/actions)
+[![Last Commit](https://img.shields.io/github/last-commit/shadowlane-sc/Cloudfront_HTTP?color=informational)](https://github.com/shadowlane-sc/Cloudfront_HTTP/commits/main)
+[![Repo Size](https://img.shields.io/github/repo-size/shadowlane-sc/Cloudfront_HTTP?color=blue)](https://github.com/shadowlane-sc/Cloudfront_HTTP)
+[![License](https://img.shields.io/github/license/shadowlane-sc/Cloudfront_HTTP?color=brightgreen)](LICENSE.md)
 
-![Stars](https://img.shields.io/github/stars/shadowlane-sc/Cloudfront_HTTP?style=social)
-![Forks](https://img.shields.io/github/forks/shadowlane-sc/Cloudfront_HTTP?style=social)
-![Issues](https://img.shields.io/github/issues/shadowlane-sc/Cloudfront_HTTP)
-![Last Commit](https://img.shields.io/github/last-commit/shadowlane-sc/Cloudfront_HTTP)
-![Docker](https://img.shields.io/badge/docker%20compose-supported-brightgreen?logo=docker)
-![Security](https://img.shields.io/badge/security-policy-brightgreen)
+<!-- Programming Languages & Stats -->
+[![Languages](https://img.shields.io/github/languages/count/shadowlane-sc/Cloudfront_HTTP?color=blueviolet&label=Languages)](https://github.com/shadowlane-sc/Cloudfront_HTTP)
+[![Top Language](https://img.shields.io/github/languages/top/shadowlane-sc/Cloudfront_HTTP?color=orange&label=Top%20Language)](https://github.com/shadowlane-sc/Cloudfront_HTTP)
+[![Lines of Code](https://img.shields.io/tokei/lines/github/shadowlane-sc/Cloudfront_HTTP?color=purple&label=Lines%20of%20Code)](https://github.com/shadowlane-sc/Cloudfront_HTTP)
 
-![Slack Notify](https://img.shields.io/badge/Slack-Integrated-blue?logo=slack)
-![Discord Alerts](https://img.shields.io/badge/Discord-Alerts-blueviolet?logo=discord)
+<!-- Specific Language Badges -->
+![Node.js](https://img.shields.io/badge/Node.js-%23339933?style=flat&logo=nodedotjs&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-%23777BB4?style=flat&logo=php&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-%23F7DF1E?style=flat&logo=javascript&logoColor=black)
+![Python](https://img.shields.io/badge/Python-%233776AB?style=flat&logo=python&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-%230db7ed?style=flat&logo=docker&logoColor=white)
+<!-- Add/remove language badges as appropriate -->
+
+<!-- Integrations -->
+[![Slack Notify](https://img.shields.io/badge/Slack-Integrated-blue?logo=slack)](https://slack.com/)
+[![Discord Alerts](https://img.shields.io/badge/Discord-Alerts-blueviolet?logo=discord)](https://discord.com/)
+[![Matrix](https://img.shields.io/badge/Matrix-Supported-2dba4e?logo=matrix)](https://matrix.to/#/#shadowlane:matrix.org) 
 
 --- 
 
