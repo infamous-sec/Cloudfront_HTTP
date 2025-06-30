@@ -13,14 +13,25 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
-    deploy:
-      resources:
-        limits:
-          memory: 128M
-          cpus: '0.25'
-    restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost"]
       interval: 30s
       timeout: 3s
       retries: 3
+    restart: unless-stopped
+
+  observer-logger:
+    build: ./logger
+    container_name: observer-logger
+    volumes:
+      - ./logs:/app/logs
+    ports:
+      - "8890:5000"
+    restart: unless-stopped
+    environment:
+      LOG_LEVEL: INFO
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
