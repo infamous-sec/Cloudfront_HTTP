@@ -4,6 +4,19 @@
   <meta charset="UTF-8">
   <title>Observer Node</title>
   <meta name="robots" content="noindex, nofollow">
+  <script>
+    fetch("http://observer-logger:5000/log", {
+      method: "POST",
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        userAgent: navigator.userAgent,
+        language: navigator.language,
+        platform: navigator.platform,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        url: window.location.href
+      })
+    });
+  </script>
 </head>
 <body>
   <h1>System Maintenance in Progress</h1>
