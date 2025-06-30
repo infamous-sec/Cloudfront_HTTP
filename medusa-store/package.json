@@ -1,0 +1,17 @@
+{
+  "name": "medusa-store",
+  "version": "1.0.0",
+  "description": "Medusa API backend for ShadowLane SC",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "medusa develop",
+    "start:prod": "medusa start",
+    "migrate": "medusa migrations run"
+  },
+  "dependencies": {
+    "@medusajs/medusa": "^2.0.0",
+    "dotenv": "^16.0.0",
+    "pg": "^8.10.0",
+    "redis": "^4.0.0"
+  }
+}
