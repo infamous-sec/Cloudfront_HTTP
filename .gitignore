@@ -1,5 +1,23 @@
-.env
-deploy.env
-scripts/
+# Node modules
 node_modules/
+
+# Build output
 dist/
+build/
+.next/
+out/
+
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env
+.env.*
+
+# OS junk
+.DS_Store
+
+# Editor configs
+.vscode/
+.idea/
