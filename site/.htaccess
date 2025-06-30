@@ -1,5 +1,7 @@
 # Enable custom error pages
 ErrorDocument 404 /404.html
+ErrorDocument 500 /500.html
+ErrorDocument 503 /503.html
 
 # Security headers (basic)
 Header set X-Content-Type-Options "nosniff"
@@ -13,3 +15,9 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # Block access to hidden files and folders
 RedirectMatch 404 /\..*$
+
+# Allow .well-known for standards compliance
+<Directory "/.well-known">
+  Allow from all
+  Satisfy any
+</Directory>
