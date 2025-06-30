@@ -1,0 +1,22 @@
+User-agent: *
+Disallow: /admin
+Disallow: /api/
+Disallow: /login
+Disallow: /config
+Disallow: /private
+Disallow: /observer-node
+Disallow: /backup
+Disallow: /dev
+Disallow: /.env
+Disallow: /.git
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+Sitemap: https://shadowlane.cymru/sitemap.xml
