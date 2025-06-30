@@ -8,9 +8,17 @@ yarn.lock
 .gitignore
 
 # Docker config
+Dockerfile* 
 .dockerignore
 .env
 deploy.env
 
 # Local-only code (security)
 scripts/
+
+*.env
+.vscode
+*.md
+logs
+dist
+*.zip
