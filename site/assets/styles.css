@@ -1,0 +1,35 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 2em;
+  background: #fafbfc;
+  color: #222;
+}
+header {
+  margin-bottom: 2em;
+}
+nav a {
+  margin-right: 1em;
+  text-decoration: none;
+  color: #0b3c59;
+}
+footer {
+  margin-top: 2em;
+  color: #555;
+  font-size: 0.9em;
+}
+form {
+  margin: 1em 0;
+}
+input, textarea {
+  width: 100%;
+  padding: 0.5em;
+  margin-bottom: 1em;
+}
+button {
+  padding: 0.5em 2em;
+  background: #1b6ac6;
+  color: #fff;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
