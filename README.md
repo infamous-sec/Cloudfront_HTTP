@@ -24,7 +24,8 @@ A dynamic, obfuscated web deployment pipeline built by **ShadowLane SC UK** for 
 <!-- Integrations -->
 [![Slack Notify](https://img.shields.io/badge/Slack-Integrated-blue?logo=slack)](https://slack.com/)
 [![Discord Alerts](https://img.shields.io/badge/Discord-Alerts-blueviolet?logo=discord)](https://discord.com/)
-[![Matrix](https://img.shields.io/badge/Matrix-Supported-2dba4e?logo=matrix)](https://matrix.to/#/#shadowlane:matrix.org) 
+[![Matrix](https://img.shields.io/badge/Matrix-Supported-2dba4e?logo=matrix)](https://matrix.to/#/#shadowlane:matrix.org)
+[![Ko-fi](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-Ko--fi-%2346b798?logo=kofi&logoColor=white)](https://ko-fi.com/shadowlanesc)
 
 --- 
 
