@@ -24,6 +24,11 @@
 [![Discord Alerts](https://img.shields.io/badge/Discord-Alerts-blueviolet?logo=discord)](https://discord.com/)
 [![Matrix](https://img.shields.io/badge/Matrix-Supported-2dba4e?logo=matrix)](https://matrix.to/#/#shadowlane:matrix.org)
 
+<!-- Security and Funding -->
+[![Security Policy](https://img.shields.io/badge/Security-Policy-blue)](SECURITY.md)
+[![Code of Conduct](https://img.shields.io/badge/Code%20of%20Conduct-active-brightgreen)](CODE_OF_CONDUCT.md)
+[![Ko-fi](https://img.shields.io/badge/Buy%20me%20a%20coffee-Ko--fi-FF5E5B?logo=kofi&logoColor=white)](https://ko-fi.com/shadowlanesc)
+[![Sponsor via GitHub](https://img.shields.io/badge/Sponsor-GitHub-brightgreen?logo=github)](https://github.com/sponsors/shadowlane-sc)
 ---
 
 ## Overview
