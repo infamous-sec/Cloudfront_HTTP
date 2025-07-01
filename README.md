@@ -6,7 +6,7 @@
 [![License](https://img.shields.io/github/license/shadowlane-sc/Cloudfront_HTTP?color=brightgreen)](LICENSE.md)
 [![Languages](https://img.shields.io/github/languages/count/shadowlane-sc/Cloudfront_HTTP?color=blueviolet&label=Languages)](https://github.com/shadowlane-sc/Cloudfront_HTTP)
 [![Top Language](https://img.shields.io/github/languages/top/shadowlane-sc/Cloudfront_HTTP?color=orange&label=Top%20Language)](https://github.com/shadowlane-sc/Cloudfront_HTTP)
-[![Lines of Code](https://img.shields.io/tokei/lines/github/shadowlane-sc/Cloudfront_HTTP?color=purple&label=Lines%20of%20Code)](https://github.com/shadowlane-sc/Cloudfront_HTTP)
+[![Lines of Code](https://img.codetabs.com/github/shadowlane-sc/Cloudfront_HTTP.svg)](https://github.com/shadowlane-sc/Cloudfront_HTTP)
 
 ![Node.js](https://img.shields.io/badge/Node.js-%23339933?style=flat&logo=nodedotjs&logoColor=white)
 ![PHP](https://img.shields.io/badge/PHP-%23777BB4?style=flat&logo=php&logoColor=white)
